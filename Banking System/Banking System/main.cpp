@@ -6,6 +6,8 @@
 //
 
 #include <iostream>
+#include <vector>
+#include <string>
 
 class Customer {
 private:
@@ -21,6 +23,35 @@ public:
     double getBalance();
     std::string getUsername();
 };
+
+Customer::Customer(std::string u, std::string p) {
+    username = u;
+    password = p;
+    balance = 0.0;
+}
+
+bool Customer::checkPassword(std::string input) {
+    return input == password;
+}
+
+void Customer::deposit(double amount) {
+    balance += amount;
+}
+
+bool Customer::withdraw(double amount) {
+    if (amount > balance) return false;
+    balance -= amount;
+    return true;
+}
+
+double Customer::getBalance() {
+    return balance;
+}
+
+std::string Customer::getUsername() {
+    return username;
+}
+
 
 
 int main(int argc, const char * argv[]) {
